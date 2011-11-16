@@ -4,11 +4,8 @@
  */
 package designpattern.facade;
 
-import sun.util.BuddhistCalendar;
-
 /**
- *
- * @author 编程是一门艺术
+ * @author lmm333
  */
 public class Facade {
 
