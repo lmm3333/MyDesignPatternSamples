@@ -5,43 +5,40 @@ package designpattern.state;
  */
 public class stateSample {
     public static void main(String[] args) {
-        Context ruandan =new Context();
-        ruandan.setState(Context.单身state);
-        ruandan.追求();
-        ruandan.得手();
-        ruandan.分手();
+        Context 软蛋 =new Context(Context.单身state);
+        软蛋.追求();
+        软蛋.得手();
+        软蛋.分手();
     }
 }
 
 //环境，用于保存状态
-class Context {//extends State
+
+class Context {
     public static final State 单身state=new 单身State();
     public static final State 恋爱state=new 恋爱State();
     public static final State 求偶state=new 求偶State();
     
     private State state;
 
-//    public Context(State state) {
-//        this.state = state;
-//        this.state.setContext(this);
-//    }
+    public Context(State state) {
+        this.state = state;
+        this.state.setContext(this);
+    }
 
     public void setState(State state) {
         this.state = state;
-        this.state.setContext(this);
+        this.state.setContext(this);//这一句很重要，保证了状态子类里能够正确地应用到context对象
     }
     public State getState() {
         return state;
     }
-//     @Override
     public void 分手() {
         state.分手();
     }
-//    @Override
     public void 得手() {
         state.得手();
     }
-//    @Override
     public void 追求() {
         state.追求();
     }
